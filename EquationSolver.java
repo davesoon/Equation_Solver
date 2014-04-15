@@ -4,9 +4,10 @@
  * 11:00 PM
  * rgw3d
  */
+import java.util.ArrayList;
 import java.util.Scanner;
 public class EquationSolver{
-    public final char variable = 'x';
+    public static final char variable = 'x';
     public static void main(String args[]){
         
         System.out.println("Input your equation");
@@ -35,8 +36,10 @@ public class EquationSolver{
     public static boolean isEquation(String string){
         simplifyInput(string);
         
-        if(string.indexOf(string.indexOf(=)))
+        if(string.indexOf(string.indexOf('=')) == -1)
             return false;
+        
+        return true;
     }
     
     public static String simplifyInput(String fix){
@@ -55,9 +58,9 @@ public class EquationSolver{
     }
     
     public static Nomial nextNomial(String expression){
-        string nomial = "";
+        String nomial = "";
         boolean hasVariable = false;
-        for(int i = 0; i < expression.length; i ++){
+        for(int i = 0; i < expression.length(); i ++){
             switch(expression.charAt(i)){
                 case variable:
                     if(!hasVariable)
@@ -71,8 +74,6 @@ public class EquationSolver{
                 case '=':
                     //ends the loop
                     continue;
-                break;
-                
                 default:
                     nomial += expression.charAt(i);
                 break;
@@ -80,11 +81,11 @@ public class EquationSolver{
         }
         
         if(expression.indexOf(variable) != -1){
-            if(expression.charAt(indexOf(variable) + 1) == '^'){
-                return new Nomial(Float.parseFloat(nomial.substring(0, indexOf(variable) - 1)), Integer.parseInt(nomial.substring(indexOf(variable) + 1));
+            if(expression.charAt(expression.indexOf(variable) + 1) == '^'){
+                return new Nomial(Float.parseFloat(nomial.substring(0, expression.indexOf(variable) - 1)), Integer.parseInt(nomial.substring(expression.indexOf(variable) + 1)));
             }
             else{
-                return new Nomial(Float.parseFloat(nomial.substring(0, indexOf(Variable) - 1)), 1);
+                return new Nomial(Float.parseFloat(nomial.substring(0, expression.indexOf(variable) - 1)), 1);
             }
             
         }
@@ -99,7 +100,7 @@ public class EquationSolver{
         
         ArrayList newEquation = new ArrayList();
         simplifyInput(equation);
-        float tempCoefficent = 0.0;
+        float tempCoefficent = 0;
         int tempPower = 0;
         
         

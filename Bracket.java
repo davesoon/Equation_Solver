@@ -5,7 +5,7 @@ class Bracket{
     this.isOpen = isOpen;
   }
   
-  public void getIsOpen(){
+  public boolean getIsOpen(){
     return isOpen;
   }
 }
