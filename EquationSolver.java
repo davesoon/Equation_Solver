@@ -6,7 +6,7 @@
  */
 import java.util.Scanner;
 public class EquationSolver{
-    
+    public final char variable = 'x';
     public static void main(String args[]){
         
         System.out.println("Input your equation");
@@ -56,16 +56,40 @@ public class EquationSolver{
     
     public static Nomial nextNomial(String expression){
         string nomial = "";
+        boolean hasVariable = false;
         for(int i = 0; i < expression.length; i ++){
             switch(expression.charAt(i)){
+                case variable:
+                    if(!hasVariable)
+                        hasVariable = false;
+                    else
+                        continue;
                 case '+':
                 case '-':
                 case '*':
                 case '/':
                 case '=':
-                    
+                    //ends the loop
+                    continue;
+                break;
+                
+                default:
+                    nomial += expression.charAt(i);
                 break;
             }
+        }
+        
+        if(expression.indexOf(variable) != -1){
+            if(expression.charAt(indexOf(variable) + 1) == '^'){
+                return new Nomial(Float.parseFloat(nomial.substring(0, indexOf(variable) - 1)), Integer.parseInt(nomial.substring(indexOf(variable) + 1));
+            }
+            else{
+                return new Nomial(Float.parseFloat(nomial.substring(0, indexOf(Variable) - 1)), 1);
+            }
+            
+        }
+        else{
+            return new Nomial(Float.parseFloat(nomial), 0);
         }
     }
     
