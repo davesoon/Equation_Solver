@@ -1,20 +1,14 @@
 class Nomial{
-  private boolean isPositive;
   private float coefficient;
   private int power;
   
   Nomial(){
-    this(true, 0.0, 0);
+    this(0.0, 0);
   }
   
-  Nomial(boolean p, float c, power p){
-    isPositive = p;
-    coefficent = c;
-    power = p;
-  }
-  
-  public boolean getIsPositive{
-    return isPositive; 
+  Nomial(float coefficent, int power){
+    this.coefficent = coefficent;
+    this.power = power;
   }
   
   public float getCoefficent{
@@ -24,4 +18,31 @@ class Nomial{
   public int getPower{
     return power;
   }
+  
+  public boolean add(Nomial nomial){
+    if(power == nomial.power){
+      coefficent += nomial.coefficent;
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean subtract(Nomial nomial){
+    if(power == nomial.power){
+      coefficent -= nomial.coefficent;
+      return true;
+    }
+    return false;
+  }
+  
+  public void multiply(Nomial nomial){
+    power += nomial.power;
+    coefficent *= nomial.coefficent;
+  }
+  
+  public void divide(Nomial nomial){
+    power -= nomial.power;
+    coefficent /= nomial.coefficent;
+  }
+  
 }
