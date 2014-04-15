@@ -54,24 +54,33 @@ public class EquationSolver{
         
     }
     
+    public static Nomial nextNomial(String expression){
+        string nomial = "";
+        for(int i = 0; i < expression.length; i ++){
+            switch(expression.charAt(i)){
+                case '+':
+                case '-':
+                case '*':
+                case '/':
+                case '=':
+                    
+                break;
+            }
+        }
+    }
+    
     public static ArrayList toArrayList(String equation){
+        if(! isEquation(equation))
+            return null;
+        
         ArrayList newEquation = new ArrayList();
         simplifyInput(equation);
-        for(int i = 0; i < equation.length; i ++){
-                switch(equation.charAt(i)){
-                    
-                    case '+':
-                    case '-':
-                    case '*':
-                    case '/':
-                    //case '%'://I don't know if I'll implement this
-                        newEquation.add(equation.charAt(i));
-                    break;
-                    
-                    default:
-                    break;
-                }
-        }
+        float tempCoefficent = 0.0;
+        int tempPower = 0;
+        
+        
+        
+        return newEquation;
     }
     
 }
