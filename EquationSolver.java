@@ -61,7 +61,7 @@ public class EquationSolver{
             switch(expression.charAt(i)){
                 case variable:
                     if(!hasVariable)
-                        hasVariable = false;
+                        hasVariable = true;
                     else
                         continue;
                 case '+':
@@ -79,16 +79,22 @@ public class EquationSolver{
             }
         }
         
-        if(expression.indexOf(variable) != -1){
+        if(hasVAriable){
+            //Finds the power symbol
             if(expression.charAt(indexOf(variable) + 1) == '^'){
+                //returns the coefficient, and the power is the rest of the string
+                
+                //CAUSES A PROBLEM WITH FLOAT POWERS
                 return new Nomial(Float.parseFloat(nomial.substring(0, indexOf(variable) - 1)), Integer.parseInt(nomial.substring(indexOf(variable) + 1));
             }
             else{
+                //No power = 1st power
                 return new Nomial(Float.parseFloat(nomial.substring(0, indexOf(Variable) - 1)), 1);
             }
             
         }
         else{
+            //returns coefficient
             return new Nomial(Float.parseFloat(nomial), 0);
         }
     }
@@ -102,7 +108,7 @@ public class EquationSolver{
         float tempCoefficent = 0.0;
         int tempPower = 0;
         
-        
+        newEquation.add(nextNomial(equation)));
         
         return newEquation;
     }
