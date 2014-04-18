@@ -64,7 +64,7 @@ public class EquationSolver{
             switch(expression.charAt(i)){
                 case variable:
                     if(!hasVariable)
-                        hasVariable = false;
+                        hasVariable = true;
                     else
                         continue;
                 case '+':
@@ -80,16 +80,31 @@ public class EquationSolver{
             }
         }
         
+<<<<<<< HEAD
         if(expression.indexOf(variable) != -1){
             if(expression.charAt(expression.indexOf(variable) + 1) == '^'){
                 return new Nomial(Float.parseFloat(nomial.substring(0, expression.indexOf(variable) - 1)), Integer.parseInt(nomial.substring(expression.indexOf(variable) + 1)));
             }
             else{
                 return new Nomial(Float.parseFloat(nomial.substring(0, expression.indexOf(variable) - 1)), 1);
+=======
+        if(hasVAriable){
+            //Finds the power symbol
+            if(expression.charAt(indexOf(variable) + 1) == '^'){
+                //returns the coefficient, and the power is the rest of the string
+                
+                //CAUSES A PROBLEM WITH FLOAT POWERS
+                return new Nomial(Float.parseFloat(nomial.substring(0, indexOf(variable) - 1)), Integer.parseInt(nomial.substring(indexOf(variable) + 1));
+            }
+            else{
+                //No power = 1st power
+                return new Nomial(Float.parseFloat(nomial.substring(0, indexOf(Variable) - 1)), 1);
+>>>>>>> d548784448c2d6ba9b48ab54f100fa7d2ce01cb0
             }
             
         }
         else{
+            //returns coefficient
             return new Nomial(Float.parseFloat(nomial), 0);
         }
     }
@@ -103,7 +118,7 @@ public class EquationSolver{
         float tempCoefficent = 0;
         int tempPower = 0;
         
-        
+        newEquation.add(nextNomial(equation)));
         
         return newEquation;
     }
